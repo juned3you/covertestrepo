@@ -1,0 +1,22 @@
+language: java
+
+cache:
+  directories:
+  - $HOME/.m2
+
+sudo: false
+
+jdk:
+  - oraclejdk8
+
+after_success:
+  - mvn clean test jacoco:report
+
+
+deploy:
+  provider: s3
+  access_key_id: "xxx"
+  secret_access_key: "xxx"
+  bucket: "ectestabc" 
+  skip_cleanup: true  
+  local_dir: target/site
