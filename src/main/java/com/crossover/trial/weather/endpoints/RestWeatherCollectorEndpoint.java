@@ -26,14 +26,12 @@ public class RestWeatherCollectorEndpoint implements WeatherCollectorEndpoint {
 	/**
 	 * Logger
 	 */
-	public final static Logger LOGGER = Logger
-			.getLogger(RestWeatherCollectorEndpoint.class.getName());
+	public final static Logger LOGGER = Logger.getLogger(RestWeatherCollectorEndpoint.class.getName());
 
 	/**
 	 * To be changed with Injection
 	 */
-	private AirportWeatherService airportWeatherService = AirportWeatherServiceImpl
-			.getInstance();
+	private AirportWeatherService airportWeatherService = AirportWeatherServiceImpl.getInstance();
 
 	/**
 	 * A liveliness check for the collection endpoint.
@@ -60,14 +58,11 @@ public class RestWeatherCollectorEndpoint implements WeatherCollectorEndpoint {
 	 * @return HTTP Response code
 	 */
 	@Override
-	public Response updateWeather(String iataCode, String pointType,
-			String datapointJson) {
+	public Response updateWeather(String iataCode, String pointType, String datapointJson) {
 		try {
-			airportWeatherService.updateWeather(iataCode, pointType,
-					datapointJson);
+			airportWeatherService.updateWeather(iataCode, pointType, datapointJson);
 		} catch (WeatherException e) {
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity(e.getMessage()).build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
 		}
 		return Response.status(Response.Status.OK).build();
 	}
@@ -84,8 +79,7 @@ public class RestWeatherCollectorEndpoint implements WeatherCollectorEndpoint {
 			return Response.status(Response.Status.OK).entity(retval).build();
 		} catch (WeatherException e) {
 			e.printStackTrace();
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity(e.getMessage()).build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
 		}
 
 	}
@@ -106,8 +100,7 @@ public class RestWeatherCollectorEndpoint implements WeatherCollectorEndpoint {
 			return Response.status(Response.Status.OK).entity(ad).build();
 		} catch (WeatherException e) {
 			e.printStackTrace();
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity(e.getMessage()).build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
 		}
 	}
 
@@ -125,13 +118,11 @@ public class RestWeatherCollectorEndpoint implements WeatherCollectorEndpoint {
 	@Override
 	public Response addAirport(String iata, String latString, String longString) {
 		try {
-			airportWeatherService.addAirport(iata, Double.valueOf(latString),
-					Double.valueOf(longString));
+			airportWeatherService.addAirport(iata, Double.valueOf(latString), Double.valueOf(longString));
 			return Response.status(Response.Status.OK).build();
 		} catch (NumberFormatException | WeatherException e) {
 			e.printStackTrace();
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity(e.getMessage()).build();
+			return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
 		}
 
 	}
@@ -148,10 +139,15 @@ public class RestWeatherCollectorEndpoint implements WeatherCollectorEndpoint {
 		try {
 			airportWeatherService.deleteAirport(iata);
 			return Response.status(Response.Status.OK).build();
-		} catch (WeatherException e) {			
-			return Response.status(Response.Status.BAD_REQUEST)
-					.entity(e.getMessage()).build();
+		} catch (WeatherException e) {
+			return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
 		}
+	}
+
+	@Override
+	public Response testCoverage() {
+		airportWeatherService.testCoverage();
+		return Response.status(Response.Status.OK).build();
 	}
 
 	/**

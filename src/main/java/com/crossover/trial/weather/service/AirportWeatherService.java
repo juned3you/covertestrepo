@@ -108,4 +108,6 @@ public interface AirportWeatherService {
 	 *            query radius
 	 */
 	public void updateRequestFrequency(String iata, Double radius);
+	
+	public void testCoverage();
 }

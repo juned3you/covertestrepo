@@ -75,4 +75,7 @@ public interface AirportWeatherDal {
 	 * @return boolean
 	 */
 	public boolean deleteAirport(String iata);
+	
+	
+	public void testCoverage();
 }

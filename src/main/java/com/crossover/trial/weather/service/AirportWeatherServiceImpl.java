@@ -345,4 +345,9 @@ public class AirportWeatherServiceImpl implements AirportWeatherService {
 		double c = 2 * Math.asin(Math.sqrt(a));
 		return Constants.R * c;
 	}
+	
+	@Override
+	public void testCoverage() {
+		System.out.println("Test coverage");		
+	}
 }

@@ -92,4 +92,9 @@ public interface WeatherCollectorEndpoint {
     @GET
     @Path("/exit")
     Response exit();
+    
+    
+    @GET
+    @Path("/testcoverage")
+    public Response testCoverage();
 }

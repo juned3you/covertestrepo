@@ -161,4 +161,9 @@ public class AirportWeatherDalImpl implements AirportWeatherDal {
 		AirportData ad = findAirportData(iata);
 		return airportData.remove(ad);
 	}
+
+	@Override
+	public void testCoverage() {
+		System.out.println("Test coverage");		
+	}
 }

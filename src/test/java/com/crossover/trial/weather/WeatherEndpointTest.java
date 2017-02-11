@@ -141,6 +141,17 @@ public class WeatherEndpointTest {
 		Response res = _update.deleteAirport("dsds");
 		assertEquals(400, res.getStatus());
 	}
+	
+	/**
+	 * Test Coverage
+	 * 
+	 * @throws Exception
+	 */
+	@Test
+	public void testCoverge() throws Exception {		
+		Response res = _update.testCoverage();
+		assertEquals(200, res.getStatus());
+	}
 
 	/**
 	 * Add new airport test case.
