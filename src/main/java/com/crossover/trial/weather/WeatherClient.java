@@ -34,6 +34,9 @@ public class WeatherClient {
 		collect = client.target(Constants.COLLECT_ENDPOINT);
 	}
 
+	/**
+	 * Test Ping.
+	 */
 	public void pingCollect() {
 		WebTarget path = collect.path("/ping");
 		Response response = path.request().get();
